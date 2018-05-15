@@ -1,0 +1,194 @@
+body {
+	height: 100vh;
+    background-color: #EEE;
+    /*background: linear-gradient(blue, black);*/
+    font-family: 'Museo Sans Rounded', 'Helvetica Neue', Arial, sans-serif;
+}
+.App {
+background-color: #EEE;
+color: #111;
+overflow-y: scroll;
+}
+.viewContainer {
+	padding: 3vw;
+	width: calc(100% - 6vw);
+	text-align: center;
+	margin-left: 0vw;
+	margin-top: 4vw;
+	margin-bottom: 3vw;
+}
+header {
+    position: fixed;
+    z-index: 300;
+    width: 100%;
+    text-align: center;
+    background-color: white;
+	box-shadow: 0px 0px 16px rgba(16,16,16,0.15);
+/*    background:linear-gradient(to right, cyan, magenta);*/
+}
+.header-content {
+	display: inline-block;
+	width: 80vw;
+	text-align: left;
+}
+h1 {
+	margin: 14px 0;
+	font-size: 56px;
+	color: #111;
+}
+h2 {
+	font-weight: 400;
+	font-size: 18px;
+	color: #111;
+	margin-bottom: 0px;
+	padding: 0px 14px;
+}
+h3 {
+	margin: 4px 0px;
+	padding: 0px 14px;
+}
+h5 {
+		margin: auto 0px;
+}
+.cardContainer {
+	margin: 0 auto;
+	display: inline-block;
+	text-align: center;
+	max-width: 1440px;
+}
+.filmCard {
+	 vertical-align:top;
+	display: inline-block;
+	margin: 20px 10px 10px 10px;
+	color: black;
+	width: 250px;
+	text-align: left;
+	height: 514px;
+	background-color: #fff;
+	border-radius: 10px;
+	position: relative;
+	transition: all .2s ease-in-out;
+}
+.filmCard:hover {
+	cursor: pointer;
+	transform: scale(1.05);
+		box-shadow: 0px 16px 32px rgba(16,16,16,0.10);
+}
+.filmDetails {
+	margin-top: -4px;
+	border-radius: 0 0 10px 10px;
+}
+.film-poster {
+	width: 100%;
+	border-radius: 0.5vw 0.5vw 0 0;
+		margin-bottom: 0px;
+	height: 367px;
+	background-size: cover;
+	background-position: top;
+	background-repeat: no-repeat;
+	background-color: black;
+	position: relative;
+}
+.ratings {
+	position: absolute;
+	display: inline-block;
+	list-style-type: none;
+	text-align: left;
+	padding: 0px;
+	margin: 0px;
+	margin-top: 8px;
+	width: 100%;
+	border-top: 1px solid #EEE;
+	bottom: 0;
+}
+.ratings li {
+	display: inline-block;
+	text-align: center;
+	border-right: 1px solid #EEE;
+	padding: 8px 4px;
+	width: calc(33% -  8px);
+	vertical-align: middle;
+}
+.ratings li:last-child {
+	border-right: none;
+}
+
+.frame {
+    position: fixed;
+    z-index: 200;
+    background-color: blue;
+    left: 0;
+}
+.horizontal {
+    height: 3vw;
+    width: 100%;
+}
+.vertical {
+    width: 3vw;
+    top: 3vw;
+    height: calc(100% - 6vw);
+    background: linear-gradient(blue, black);
+}
+.bottom {
+	top: auto;
+	bottom: 0;
+	background-color: black;
+}
+.right {
+	left: auto;
+    right: 0;
+}
+.loadingSymbol {
+	display: inline-block;
+	padding-top: 17%;
+}
+.loading-outside {
+	font-size: 16vw;
+	color: #DDD;
+}
+.loading-inside {
+	font-size: 6vw;
+	display: block;
+	margin-top: -11vw;
+	color: #DDD;
+}
+.strip {
+	display: block;
+	float: right;
+	width: 5vw;
+	height: 96px;
+	margin-top: -96px;
+}
+
+.blue {
+	background-color: MediumTurquoise;
+	margin-right: 20vw;
+}
+.green {
+	background-color: LimeGreen;
+	margin-right: 15vw;
+}
+.yellow {
+	background-color: Gold;
+	margin-right: 10vw;
+}
+.orange {
+	background-color: DarkOrange;
+	margin-right: 5vw;
+}
+.magenta {
+	background-color: MediumVioletRed;
+}
+
+.rows-appear {
+  opacity: 0.01;
+}
+
+.rows-appear.rows-appear-active {
+  opacity: 1;
+  transition: opacity .7s ease-in;
+}
+.source {
+	font-size: 10px;
+}
+
