@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './style.css';
 import FontAwesome from 'react-fontawesome';
 import BottomScrollListener from 'react-bottom-scroll-listener';
+import Typekit from 'react-typekit';
 
 import { MultiView } from './MultiView.js';
 
@@ -35,6 +36,7 @@ class App extends Component {
       loadOnScroll = (<div></div>);
     return (
       <div className="App">
+      <Typekit kitId="hsb3bpz"/>
         <header>
           <div className="header-content">
             <h1>Panoramix</h1>
