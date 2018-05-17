@@ -4,8 +4,6 @@ import FontAwesome from 'react-fontawesome';
 import BottomScrollListener from 'react-bottom-scroll-listener';
 
 import { MultiView } from './MultiView.js';
-import { SingleView } from './SingleView.js';
-
 
 const api = 'https://panoramix-backend.herokuapp.com/movies';
 
