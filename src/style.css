@@ -1,8 +1,7 @@
 body {
 	height: 100vh;
     background-color: #EEE;
-    /*background: linear-gradient(blue, black);*/
-    font-family: 'Museo Sans Rounded', 'Helvetica Neue', Arial, sans-serif;
+    font-family: 'museo-sans-rounded', 'Helvetica Neue', Arial, sans-serif;
 }
 .App {
 background-color: #EEE;
@@ -24,7 +23,6 @@ header {
     text-align: center;
     background-color: white;
 	box-shadow: 0px 0px 16px rgba(16,16,16,0.15);
-/*    background:linear-gradient(to right, cyan, magenta);*/
 }
 .header-content {
 	display: inline-block;
@@ -57,7 +55,7 @@ h5 {
 	max-width: 1440px;
 }
 .filmCard {
-	 vertical-align:top;
+	vertical-align:top;
 	display: inline-block;
 	margin: 20px 10px 10px 10px;
 	color: black;
@@ -80,7 +78,7 @@ h5 {
 }
 .film-poster {
 	width: 100%;
-	border-radius: 0.5vw 0.5vw 0 0;
+	border-radius: 10px 10px 0 0;
 		margin-bottom: 0px;
 	height: 367px;
 	background-size: cover;
@@ -113,31 +111,6 @@ h5 {
 	border-right: none;
 }
 
-.frame {
-    position: fixed;
-    z-index: 200;
-    background-color: blue;
-    left: 0;
-}
-.horizontal {
-    height: 3vw;
-    width: 100%;
-}
-.vertical {
-    width: 3vw;
-    top: 3vw;
-    height: calc(100% - 6vw);
-    background: linear-gradient(blue, black);
-}
-.bottom {
-	top: auto;
-	bottom: 0;
-	background-color: black;
-}
-.right {
-	left: auto;
-    right: 0;
-}
 .loadingSymbol {
 	display: inline-block;
 	padding-top: 17%;
