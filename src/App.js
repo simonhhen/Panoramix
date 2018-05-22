@@ -5,6 +5,7 @@ import BottomScrollListener from 'react-bottom-scroll-listener';
 import Typekit from 'react-typekit';
 
 import { MultiView } from './MultiView.js';
+import { SingleView } from './SingleView.js';
 
 const api = 'https://panoramix-backend.herokuapp.com/movies';
 
@@ -15,20 +16,20 @@ class App extends Component {
     this.state = { view: 'multi', hits: [], isLoading: true, numPages: 1, isLoadingScroll: false};
     this.toggleView = this.toggleView.bind(this);
   }
-  toggleView() {
+  toggleView(filmID) {
     const newView = this.state.view === 'single' ? 'multi' : 'single';
     this.setState({ view: newView });
+    this.setState({ selected: filmID });    
   }
   getQuery(page){
     return ("?page="+page+"&limit=15");
   }
   render() {
-    // var view = (this.state.view === 'multi') ? (<MultiView data={this.hits}/>) : (<SingleView film={sample} />);
     var view = (<div className="loadingSymbol">
             <FontAwesome className='loading-outside' name='circle-notch' spin />
             <FontAwesome className='loading-inside' name='film' /></div>);
     if (!this.state.isLoading)
-      view = (<MultiView data={this.state.hits}/>);
+      view = (this.state.view === 'multi') ? (<div><MultiView data={this.state.hits} select={this.toggleView}/><BottomScrollListener onBottom={this.fetchMore.bind(this)} offset={800} /></div>) : (<SingleView film={this.state.hits[this.state.selected]} close={this.toggleView}/>);
     var loadOnScroll = (<div className="loadingSymbol">
             <FontAwesome className='loading-outside' name='circle-notch' spin />
             <FontAwesome className='loading-inside' name='film' /></div>);
@@ -51,14 +52,13 @@ class App extends Component {
         {view}
         {loadOnScroll}
         </div>
-        <BottomScrollListener onBottom={this.fetchMore.bind(this)} offset={800} />
       </div>
     );
   }
   fetchMore() {
+    if (!this.state.isLoading){
     this.setState({isLoadingScroll: true});
     var page = this.state.numPages + 1;
-    console.log(page);
     this.setState({numPages: page});
     var query = this.getQuery(page);
     fetch(api + query)
@@ -69,6 +69,7 @@ class App extends Component {
         combined = combined.concat(data.movies);
         
         this.setState({hits: combined, isLoadingScroll: false})})    
+  }
   }
   componentDidMount() {
     this.setState({isLoading: true});

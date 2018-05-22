@@ -3,18 +3,22 @@ import React from 'react';
 import { FilmCard } from './FilmCard.js';
 
 export class MultiView extends React.Component {
-	singleView(){
-		console.log("Press!");
+	constructor(props) {
+		super(props);
+		this.state = {selected: 'none'};
+		this.handler = this.handler.bind(this);
 	}
-	clickCallback(){
-		this.setState({view: 'single'});
+	handler(filmID) {
+		this.setState({selected:1});
+		this.props.select(filmID);
 	}
 	render() {
-		console.log(this.props.data);
+		var passer = this.handler;
+		var cards = this.props.data.map(function(film, index) {
+			return <FilmCard film={film} key={index} index={index} handler={passer}/>;
+		}, this);
 		return <div className="cardContainer">
-		{this.props.data.map(function(film){
-			return <FilmCard film={film}/>;
-		})}
+		{cards}
 		</div>;
 	}
 }

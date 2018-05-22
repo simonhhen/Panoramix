@@ -2,6 +2,7 @@ body {
 	height: 100vh;
     background-color: #EEE;
     font-family: 'museo-sans-rounded', 'Helvetica Neue', Arial, sans-serif;
+    color: #111;
 }
 .App {
 background-color: #EEE;
@@ -9,12 +10,12 @@ color: #111;
 overflow-y: scroll;
 }
 .viewContainer {
-	padding: 3vw;
-	width: calc(100% - 6vw);
+	padding: 45px;
+	width: calc(100% - 90px);
 	text-align: center;
-	margin-left: 0vw;
-	margin-top: 4vw;
-	margin-bottom: 3vw;
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-bottom: 45px;
 }
 header {
     position: fixed;
@@ -32,30 +33,32 @@ header {
 h1 {
 	margin: 14px 0;
 	font-size: 56px;
-	color: #111;
 	font-weight: 900;
 }
 h2 {
 	font-weight: 400;
 	font-size: 18px;
-	color: #111;
 	margin-bottom: 0px;
 	padding: 0px 14px;
 }
 h3 {
 	margin: 4px 0px;
 	padding: 0px 14px;
+	text-align: left;
 }
-h5 {
-		margin: auto 0px;
+h4, h5 {
+	margin: 6px 0px;
+	text-align: left;
+	padding: 0px 14px;
+	font-weight: 300;
 }
 .cardContainer {
-	margin: 0 auto;
+	margin: 56px auto;
 	display: inline-block;
 	text-align: center;
 	max-width: 1440px;
 }
-.filmCard {
+.cardContainer .filmCard {
 	vertical-align:top;
 	display: inline-block;
 	margin: 20px 10px 10px 10px;
@@ -68,19 +71,15 @@ h5 {
 	position: relative;
 	transition: all .2s ease-in-out;
 }
-.filmCard:hover {
+.cardContainer .filmCard:hover {
 	cursor: pointer;
 	transform: scale(1.05);
 		box-shadow: 0px 16px 32px rgba(16,16,16,0.10);
 }
-.filmDetails {
-	margin-top: -4px;
-	border-radius: 0 0 10px 10px;
-}
 .film-poster {
 	width: 100%;
 	border-radius: 10px 10px 0 0;
-		margin-bottom: 0px;
+	margin-bottom: 0px;
 	height: 367px;
 	background-size: cover;
 	background-position: top;
@@ -88,7 +87,37 @@ h5 {
 	background-color: black;
 	position: relative;
 }
-.ratings {
+
+.film-content {
+	float: left;
+	width: 100%;
+	margin-top: 120px;
+}
+.film-content h2, .film-content h4 {
+	color: white;
+}
+.singleContainer .film-poster {
+	width: 250px;	
+	border-radius: 10px;
+	display: inline-block;
+}
+.singleContainer .filmDetails{
+	display: inline-block;
+	position: relative;
+	padding-top: 186px;
+	padding-left: 10px;
+	vertical-align: top;
+	max-width: 640px;
+}
+
+.cardContainer .filmDetails, .cardContainer .filmStats {
+	margin-top: -4px;
+	border-radius: 0 0 10px 10px;
+	list-style-type: none;
+	text-align: left;
+}
+
+.cardContainer .ratings {
 	position: absolute;
 	display: inline-block;
 	list-style-type: none;
@@ -100,7 +129,7 @@ h5 {
 	border-top: 1px solid #EEE;
 	bottom: 0;
 }
-.ratings li {
+.ratings li, .filmStats li {
 	display: inline-block;
 	text-align: center;
 	border-right: 1px solid #EEE;
@@ -108,7 +137,7 @@ h5 {
 	width: calc(33% -  8px);
 	vertical-align: middle;
 }
-.ratings li:last-child {
+.ratings li:last-child, .filmStats li:last-child {
 	border-right: none;
 }
 
@@ -165,4 +194,94 @@ h5 {
 .source {
 	font-size: 10px;
 }
+.single-background {
+	width: 100%;
+	height: 340px;
+	background-color: black;
+	background: linear-gradient(to bottom right, black, rgb(52,32,103));
+	position: absolute;
+	left: 0;
+	top: 96px;
+}
+.close-button {
+	height: 40px;
+	width: 40px;
+	position: absolute;
+	right: 28px;
+	top: 110px;
+	transition: all .2s ease-in-out;
+	cursor: pointer;
+}
+.close-button > span {
+	width: 40px;
+	height: 4px;
+	background-color: white;
+	display: block;
+	position: absolute;
+	top:18px;
+	transform: rotate(45deg);
+}
+.close-button > span:last-child {
+	transform: rotate(-45deg);
+}
+.close-button:hover {
+	transform: scale(0.95);
+	opacity: 0.75;
+}
 
+.singleContainer {
+	margin: 0px;
+	max-width: 1440px;
+	display: inline-block;
+	width: 80vw;
+	text-align: left;
+}
+.singleContainer h2 {
+	font-size: 24pt;
+	display: inline;
+	padding-right: 0px;
+}
+.year {
+	display: inline;
+	padding-left: 10px;
+	color: white;
+	font-weight: 700;
+}
+.singleContainer h4 {
+	margin-bottom: 20px;
+}
+
+.singleContainer .filmStats {
+	margin-top: -4px;
+	border-radius: 0 0 10px 10px;
+	list-style-type: none;
+	text-align: left;
+	padding: 0px 14px;
+	display: inline-block;
+
+}
+.singleContainer .filmStats li{
+	text-align: left;
+	width: auto;
+	border: none;
+	padding: 24px 24px 0px 0px;
+	color: #111;
+}
+.synopsis {
+	max-width: 640px;
+	padding: 14px;
+	margin: 0;
+}
+.singleContainer h3 {
+	margin-top: 24px;
+}
+.singleContainer .ratings {
+	background-color: white;
+	border-radius: 10px;
+	padding: 0px;
+}
+.singleContainer .ratings li {
+	text-align: left;
+	padding: 14px;
+	width: calc(33% -  28px);
+}
