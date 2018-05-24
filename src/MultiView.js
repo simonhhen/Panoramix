@@ -21,4 +21,7 @@ export class MultiView extends React.Component {
 		{cards}
 		</div>;
 	}
+	componentDidMount() {
+		this.props.scrollRestore();
+	}
 }

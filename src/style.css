@@ -220,6 +220,7 @@ h4, h5 {
 	position: absolute;
 	top:18px;
 	transform: rotate(45deg);
+	border-radius: 2px;
 }
 .close-button > span:last-child {
 	transform: rotate(-45deg);

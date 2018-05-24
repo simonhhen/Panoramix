@@ -13,13 +13,14 @@ class App extends Component {
 
   constructor(props){
     super(props);
-    this.state = { view: 'multi', hits: [], isLoading: true, numPages: 1, isLoadingScroll: false};
+    this.state = { view: 'multi', hits: [], isLoading: true, numPages: 1, isLoadingScroll: false, scrollPos: 0};
     this.toggleView = this.toggleView.bind(this);
   }
   toggleView(filmID) {
+    var scrollY = document.documentElement.scrollTop === 0 ? document.body.scrollTop : document.documentElement.scrollTop;
+    if (this.state.view === 'multi') this.setState({scrollPos: scrollY});
     const newView = this.state.view === 'single' ? 'multi' : 'single';
-    this.setState({ view: newView });
-    this.setState({ selected: filmID });    
+    this.setState({ view: newView, selected: filmID });
   }
   getQuery(page){
     return ("?page="+page+"&limit=15");
@@ -29,7 +30,7 @@ class App extends Component {
             <FontAwesome className='loading-outside' name='circle-notch' spin />
             <FontAwesome className='loading-inside' name='film' /></div>);
     if (!this.state.isLoading)
-      view = (this.state.view === 'multi') ? (<div><MultiView data={this.state.hits} select={this.toggleView}/><BottomScrollListener onBottom={this.fetchMore.bind(this)} offset={800} /></div>) : (<SingleView film={this.state.hits[this.state.selected]} close={this.toggleView}/>);
+      view = (this.state.view === 'multi') ? (<div><MultiView data={this.state.hits} select={this.toggleView} scrollRestore={this.restoreScroll.bind(this)}/><BottomScrollListener onBottom={this.fetchMore.bind(this)} offset={800} /></div>) : (<SingleView film={this.state.hits[this.state.selected]} close={this.toggleView}/>);
     var loadOnScroll = (<div className="loadingSymbol">
             <FontAwesome className='loading-outside' name='circle-notch' spin />
             <FontAwesome className='loading-inside' name='film' /></div>);
@@ -70,6 +71,10 @@ class App extends Component {
         
         this.setState({hits: combined, isLoadingScroll: false})})    
   }
+  }
+  restoreScroll() {
+      console.log(this.state.scrollPos);
+      window.scrollTo(0, this.state.scrollPos);
   }
   componentDidMount() {
     this.setState({isLoading: true});

@@ -1,5 +1,5 @@
 import React from 'react';
-import FontAwesome from 'react-fontawesome';
+
 import { CloseButton } from './CloseButton.js';
 
 export class SingleView extends React.Component {
@@ -54,5 +54,8 @@ export class SingleView extends React.Component {
        			</div>
        			</div>
 	            </div>;
+	}
+	componentDidMount() {
+  		window.scrollTo(0, 0)
 	}
 }
