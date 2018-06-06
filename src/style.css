@@ -107,7 +107,9 @@ h4, h5 {
 	padding-top: 186px;
 	padding-left: 10px;
 	vertical-align: top;
+	width: calc(80vw - 260px);
 	max-width: 640px;
+	min-width: 392px;
 }
 
 .cardContainer .filmDetails, .cardContainer .filmStats {
