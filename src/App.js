@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './style.css';
+import './App.scss';
 import FontAwesome from 'react-fontawesome';
 import BottomScrollListener from 'react-bottom-scroll-listener';
 import Typekit from 'react-typekit';

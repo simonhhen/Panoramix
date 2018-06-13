@@ -1,0 +1,328 @@
+$smallCutoff: 820px;
+$smallestCutoff: 444px;
+
+$blue: MediumTurquoise;
+$green: LimeGreen;
+$yellow: Gold;
+$orange: DarkOrange;
+$magenta: MediumVioletRed;
+$borderRadius: 10px;
+$maxWidth: 1440px;
+$ink: #111;
+$light: #EEE;
+
+$shadowColour: rgba(16,16,16,0.15);
+$shadowColourLight: rgba(16,16,16,0.10);
+
+.blue {
+	background-color: $blue;
+}
+.green {
+	background-color: $green;
+}
+.yellow {
+	background-color: $yellow;
+}
+.orange {
+	background-color: $orange;
+}
+.magenta {
+	background-color: $magenta;
+}
+
+@for $i from 1 through 5 {
+	.strip:nth-of-type(#{$i}) {
+    	margin-right: 0vw + (5 - $i)*5;
+    }
+}
+
+
+body {
+	height: 100vh;
+    background-color: $light;
+    font-family: 'museo-sans-rounded', 'Helvetica Neue', Arial, sans-serif;
+    color: $ink;
+}
+
+.App {
+background-color: $light;
+color: $ink;
+overflow-y: scroll;
+}
+.viewContainer {
+	padding: 45px;
+	width: calc(100% - 90px);
+	text-align: center;
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-bottom: 45px;
+	@media (max-width: $smallCutoff) {
+		padding-left: 20px;
+		padding-right: 20px;
+		width: calc(100% - 40px);
+	}
+}
+header {
+    position: fixed;
+    z-index: 300;
+    width: 100%;
+    text-align: center;
+    background-color: white;
+	box-shadow: 0px 0px 16px $shadowColour;
+}
+.header-content {
+	display: inline-block;
+	width: 80vw;
+	text-align: left;
+}
+h1 {
+	margin: 14px 0;
+	font-size: 56px;
+	font-weight: 900;
+}
+h2 {
+	font-weight: 400;
+	font-size: 18px;
+	margin-bottom: 0px;
+	padding: 0px 14px;
+}
+h3 {
+	margin: 4px 0px;
+	padding: 0px 14px;
+	text-align: left;
+}
+h4, h5 {
+	margin: 6px 0px;
+	text-align: left;
+	padding: 0px 14px;
+	font-weight: 300;
+}
+.cardContainer {
+	margin: 56px auto;
+	display: inline-block;
+	text-align: center;
+	max-width: 1440px;
+}
+.cardContainer .filmCard {
+	vertical-align:top;
+	display: inline-block;
+	margin: 20px 10px 10px 10px;
+	color: $ink;
+	width: 250px;
+	text-align: left;
+	height: 514px;
+	background-color: #fff;
+	border-radius: $borderRadius;
+	position: relative;
+	transition: all .2s ease-in-out;
+}
+.cardContainer .filmCard:hover {
+	cursor: pointer;
+	transform: scale(1.05);
+		box-shadow: 0px 16px 32px $shadowColourLight;
+}
+.film-poster {
+	width: 100%;
+	border-radius: $borderRadius $borderRadius 0 0;
+	margin-bottom: 0px;
+	height: 367px;
+	background-size: cover;
+	background-position: top;
+	background-repeat: no-repeat;
+	background-color: black;
+	position: relative;
+}
+
+.film-content {
+	float: left;
+	width: 100%;
+	margin-top: 120px;
+}
+.film-content h2, .film-content h4 {
+	color: white;
+	@media (max-width: $smallCutoff) {
+		color: $ink;
+	}
+}
+.singleContainer .film-poster {
+	width: 250px;	
+	border-radius: $borderRadius;
+	display: inline-block;
+}
+.singleContainer .filmDetails{
+	display: inline-block;
+	position: relative;
+	@media (min-width: $smallCutoff) {
+		padding-top: 186px;
+		padding-left: 10px;
+		vertical-align: top;
+		width: calc(80vw - 260px);
+	}
+	@media (max-width: $smallCutoff) {
+		padding-top: 20px;
+	}
+	max-width: 640px;
+	min-width: 392px;
+}
+
+.cardContainer .filmDetails, .cardContainer .filmStats {
+	margin-top: -4px;
+	border-radius: 0 0 $borderRadius $borderRadius;
+	list-style-type: none;
+	text-align: left;
+}
+
+.cardContainer .ratings {
+	position: absolute;
+	display: inline-block;
+	list-style-type: none;
+	text-align: left;
+	padding: 0px;
+	margin: 0px;
+	margin-top: 8px;
+	width: 100%;
+	border-top: 1px solid $light;
+	bottom: 0;
+}
+.ratings li, .filmStats li {
+	display: inline-block;
+	text-align: center;
+	border-right: 1px solid $light;
+	padding: 8px 4px;
+	width: calc(33% -  8px);
+	vertical-align: middle;
+}
+.ratings li:last-child, .filmStats li:last-child {
+	border-right: none;
+}
+
+.loadingSymbol {
+	display: inline-block;
+	padding-top: 17%;
+}
+.loading-outside {
+	font-size: 16vw;
+	color: #DDD;
+}
+.loading-inside {
+	font-size: 6vw;
+	display: block;
+	margin-top: -11vw;
+	color: #DDD;
+}
+.strip {
+	display: block;
+	float: right;
+	width: 5vw;
+	height: 96px;
+	margin-top: -96px;
+}
+
+.rows-appear {
+  opacity: 0.01;
+}
+
+.rows-appear.rows-appear-active {
+  opacity: 1;
+  transition: opacity .7s ease-in;
+}
+.source {
+	font-size: 10px;
+}
+.single-background {
+	width: 100%;
+	height: 340px;
+	background-color: black;
+	background: linear-gradient(to bottom right, black, rgb(52,32,103));
+	position: absolute;
+	left: 0;
+	top: 96px;
+}
+.close-button {
+	height: 40px;
+	width: 40px;
+	position: absolute;
+	right: 28px;
+	top: 110px;
+	transition: all .2s ease-in-out;
+	cursor: pointer;
+}
+.close-button > span {
+	width: 40px;
+	height: 4px;
+	background-color: white;
+	display: block;
+	position: absolute;
+	top:18px;
+	transform: rotate(45deg);
+	border-radius: 2px;
+}
+.close-button > span:last-child {
+	transform: rotate(-45deg);
+}
+.close-button:hover {
+	transform: scale(0.95);
+	opacity: 0.75;
+}
+
+.singleContainer {
+	margin: 0px;
+	max-width: $maxWidth;
+	display: inline-block;
+	text-align: left;
+	@media (min-width: $smallestCutoff) {
+	width: 80vw;
+	}
+}
+.singleContainer h2 {
+	font-size: 24pt;
+	display: inline;
+	padding-right: 0px;
+}
+.year {
+	display: inline;
+	padding-left: 10px;
+	color: white;
+	@media (max-width: $smallCutoff) {
+		color: $ink;
+	}
+	font-weight: 700;
+}
+.singleContainer h4 {
+	margin-bottom: 20px;
+}
+
+.singleContainer .filmStats {
+	margin-top: -4px;
+	border-radius: 0 0 $borderRadius $borderRadius;
+	list-style-type: none;
+	text-align: left;
+	padding: 0px 14px;
+	display: inline-block;
+
+}
+.singleContainer .filmStats li{
+	text-align: left;
+	width: auto;
+	border: none;
+	padding: 24px 24px 0px 0px;
+	color: $ink;
+}
+.synopsis {
+	max-width: 640px;
+	padding: 14px;
+	margin: 0;
+}
+.singleContainer h3 {
+	margin-top: 24px;
+}
+.singleContainer .ratings {
+	background-color: white;
+	border-radius: $borderRadius;
+	padding: 0px;
+}
+.singleContainer .ratings li {
+	text-align: left;
+	padding: 14px;
+	width: calc(33% -  28px);
+}
