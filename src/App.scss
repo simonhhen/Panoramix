@@ -1,5 +1,8 @@
 $smallCutoff: 820px;
 $smallestCutoff: 444px;
+$headerSize: 56px;
+$headerSizeSmall: 32px;
+
 
 $blue: MediumTurquoise;
 $green: LimeGreen;
@@ -61,6 +64,11 @@ overflow-y: scroll;
 		padding-right: 20px;
 		width: calc(100% - 40px);
 	}
+	@media (max-width: $smallestCutoff){
+		padding-left: 0px;
+		padding-right: 0px;
+		width: 100%;
+	}
 }
 header {
     position: fixed;
@@ -74,17 +82,25 @@ header {
 	display: inline-block;
 	width: 80vw;
 	text-align: left;
+	@media (max-width: $smallestCutoff) {
+		width: calc(100% - 40px);
+	}
 }
 h1 {
 	margin: 14px 0;
-	font-size: 56px;
+	font-size: $headerSize;
 	font-weight: 900;
+	text-align: left;
+	@media (max-width: $smallestCutoff) {
+		font-size: $headerSizeSmall;
+	}
 }
 h2 {
 	font-weight: 400;
 	font-size: 18px;
 	margin-bottom: 0px;
 	padding: 0px 14px;
+	text-align: left;
 }
 h3 {
 	margin: 4px 0px;
@@ -98,10 +114,13 @@ h4, h5 {
 	font-weight: 300;
 }
 .cardContainer {
-	margin: 56px auto;
+	margin: $headerSize auto;
 	display: inline-block;
 	text-align: center;
 	max-width: 1440px;
+	@media (max-width: $smallestCutoff) {
+		margin: $headerSizeSmall auto;
+	}
 }
 .cardContainer .filmCard {
 	vertical-align:top;
@@ -134,9 +153,11 @@ h4, h5 {
 }
 
 .film-content {
-	float: left;
 	width: 100%;
 	margin-top: 120px;
+	@media (max-width: $smallestCutoff) {
+		margin-top: 120px - $headerSizeSmall;
+	}
 }
 .film-content h2, .film-content h4 {
 	color: white;
@@ -147,11 +168,13 @@ h4, h5 {
 .singleContainer .film-poster {
 	width: 250px;	
 	border-radius: $borderRadius;
-	display: inline-block;
+	display: inline-block;	
 }
 .singleContainer .filmDetails{
 	display: inline-block;
 	position: relative;
+	max-width: 640px;
+	text-align: left;
 	@media (min-width: $smallCutoff) {
 		padding-top: 186px;
 		padding-left: 10px;
@@ -161,8 +184,7 @@ h4, h5 {
 	@media (max-width: $smallCutoff) {
 		padding-top: 20px;
 	}
-	max-width: 640px;
-	min-width: 392px;
+
 }
 
 .cardContainer .filmDetails, .cardContainer .filmStats {
@@ -237,6 +259,10 @@ h4, h5 {
 	position: absolute;
 	left: 0;
 	top: 96px;
+	@media (max-width: $smallestCutoff) {
+		top: $headerSizeSmall + 32px;
+	}
+
 }
 .close-button {
 	height: 40px;
@@ -246,6 +272,9 @@ h4, h5 {
 	top: 110px;
 	transition: all .2s ease-in-out;
 	cursor: pointer;
+	@media (max-width: $smallestCutoff) {
+		top: 110px - $headerSizeSmall;
+	}
 }
 .close-button > span {
 	width: 40px;
@@ -272,6 +301,9 @@ h4, h5 {
 	text-align: left;
 	@media (min-width: $smallestCutoff) {
 	width: 80vw;
+	}
+	@media (max-width: $smallCutoff) {
+		text-align:center;
 	}
 }
 .singleContainer h2 {
