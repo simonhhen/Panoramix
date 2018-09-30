@@ -1,7 +1,7 @@
-$smallCutoff: 820px;
-$smallestCutoff: 444px;
-$headerSize: 56px;
-$headerSizeSmall: 32px;
+$small-cutoff: 820px;
+$smallest-cutoff: 444px;
+$header-size: 56px;
+$header-size-small: 32px;
 
 
 $blue: MediumTurquoise;
@@ -9,13 +9,13 @@ $green: LimeGreen;
 $yellow: Gold;
 $orange: DarkOrange;
 $magenta: MediumVioletRed;
-$borderRadius: 10px;
-$maxWidth: 1440px;
+$border-radius: 10px;
+$max-width: 1440px;
 $ink: #111;
 $light: #EEE;
 
-$shadowColour: rgba(16,16,16,0.15);
-$shadowColourLight: rgba(16,16,16,0.10);
+$shadow-colour: rgba(16,16,16,0.15);
+$shadow-colour-light: rgba(16,16,16,0.10);
 
 .blue {
 	background-color: $blue;
@@ -43,28 +43,28 @@ $shadowColourLight: rgba(16,16,16,0.10);
 body {
 	height: 100vh;
     background-color: $light;
-    font-family: 'museo-sans-rounded', 'Helvetica Neue', Arial, sans-serif;
+	font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     color: $ink;
 }
 
-.App {
+.app {
 background-color: $light;
 color: $ink;
 overflow-y: scroll;
 }
-.viewContainer {
+.view-container {
 	padding: 45px;
 	width: calc(100% - 90px);
 	text-align: center;
 	margin-left: 0px;
 	margin-top: 0px;
 	margin-bottom: 45px;
-	@media (max-width: $smallCutoff) {
+	@media (max-width: $small-cutoff) {
 		padding-left: 20px;
 		padding-right: 20px;
 		width: calc(100% - 40px);
 	}
-	@media (max-width: $smallestCutoff){
+	@media (max-width: $smallest-cutoff){
 		padding-left: 0px;
 		padding-right: 0px;
 		width: 100%;
@@ -76,23 +76,24 @@ header {
     width: 100%;
     text-align: center;
     background-color: white;
-	box-shadow: 0px 0px 16px $shadowColour;
+	box-shadow: 0px 0px 16px $shadow-colour;
 }
 .header-content {
 	display: inline-block;
 	width: 80vw;
 	text-align: left;
-	@media (max-width: $smallestCutoff) {
+	@media (max-width: $smallest-cutoff) {
 		width: calc(100% - 40px);
 	}
 }
 h1 {
 	margin: 14px 0;
-	font-size: $headerSize;
+	font-size: $header-size;
 	font-weight: 900;
 	text-align: left;
-	@media (max-width: $smallestCutoff) {
-		font-size: $headerSizeSmall;
+	font-family: "Bungee Shade";
+	@media (max-width: $smallest-cutoff) {
+		font-size: $header-size-small;
 	}
 }
 h2 {
@@ -113,16 +114,17 @@ h4, h5 {
 	padding: 0px 14px;
 	font-weight: 300;
 }
-.cardContainer {
-	margin: $headerSize auto;
+.card-container {
+	margin: $header-size auto;
 	display: inline-block;
 	text-align: center;
 	max-width: 1440px;
-	@media (max-width: $smallestCutoff) {
-		margin: $headerSizeSmall auto;
+	@media (max-width: $smallest-cutoff) {
+		margin: $header-size-small auto;
 	}
 }
-.cardContainer .filmCard {
+
+.card-container .film-card {
 	vertical-align:top;
 	display: inline-block;
 	margin: 20px 10px 10px 10px;
@@ -131,18 +133,18 @@ h4, h5 {
 	text-align: left;
 	height: 514px;
 	background-color: #fff;
-	border-radius: $borderRadius;
+	border-radius: $border-radius;
 	position: relative;
 	transition: all .2s ease-in-out;
 }
-.cardContainer .filmCard:hover {
+.card-container .film-card:hover {
 	cursor: pointer;
 	transform: scale(1.05);
-		box-shadow: 0px 16px 32px $shadowColourLight;
+		box-shadow: 0px 16px 32px $shadow-colour-light;
 }
 .film-poster {
 	width: 100%;
-	border-radius: $borderRadius $borderRadius 0 0;
+	border-radius: $border-radius $border-radius 0 0;
 	margin-bottom: 0px;
 	height: 367px;
 	background-size: cover;
@@ -155,46 +157,46 @@ h4, h5 {
 .film-content {
 	width: 100%;
 	margin-top: 120px;
-	@media (max-width: $smallestCutoff) {
-		margin-top: 120px - $headerSizeSmall;
+	@media (max-width: $smallest-cutoff) {
+		margin-top: 120px - $header-size-small;
 	}
 }
 .film-content h2, .film-content h4 {
 	color: white;
-	@media (max-width: $smallCutoff) {
+	@media (max-width: $small-cutoff) {
 		color: $ink;
 	}
 }
-.singleContainer .film-poster {
+.single-container .film-poster {
 	width: 250px;	
-	border-radius: $borderRadius;
+	border-radius: $border-radius;
 	display: inline-block;	
 }
-.singleContainer .filmDetails{
+.single-container .film-details{
 	display: inline-block;
 	position: relative;
 	max-width: 640px;
 	text-align: left;
-	@media (min-width: $smallCutoff) {
+	@media (min-width: $small-cutoff) {
 		padding-top: 186px;
 		padding-left: 10px;
 		vertical-align: top;
 		width: calc(80vw - 260px);
 	}
-	@media (max-width: $smallCutoff) {
+	@media (max-width: $small-cutoff) {
 		padding-top: 20px;
 	}
 
 }
 
-.cardContainer .filmDetails, .cardContainer .filmStats {
+.card-container .film-details, .card-container .film-stats {
 	margin-top: -4px;
-	border-radius: 0 0 $borderRadius $borderRadius;
+	border-radius: 0 0 $border-radius $border-radius;
 	list-style-type: none;
 	text-align: left;
 }
 
-.cardContainer .ratings {
+.card-container .ratings {
 	position: absolute;
 	display: inline-block;
 	list-style-type: none;
@@ -206,7 +208,7 @@ h4, h5 {
 	border-top: 1px solid $light;
 	bottom: 0;
 }
-.ratings li, .filmStats li {
+.ratings li, .film-stats li {
 	display: inline-block;
 	text-align: center;
 	border-right: 1px solid $light;
@@ -214,13 +216,26 @@ h4, h5 {
 	width: calc(33% -  8px);
 	vertical-align: middle;
 }
-.ratings li:last-child, .filmStats li:last-child {
+.ratings li:last-child, .film-stats li:last-child {
 	border-right: none;
 }
 
-.loadingSymbol {
-	display: inline-block;
-	padding-top: 17%;
+.loading-symbol {
+	display: table-cell;
+	height: 100%;
+	width: 100vw;
+	vertical-align: middle;
+	text-align: center;
+}
+.card-container .loading-view {
+	height: 20vh;
+}
+.card-container .loading-symbol {
+	transform: scale(0.75);
+}
+.loading-view {
+	display: table;
+	height: 100vh;
 }
 .loading-outside {
 	font-size: 16vw;
@@ -259,8 +274,8 @@ h4, h5 {
 	position: absolute;
 	left: 0;
 	top: 96px;
-	@media (max-width: $smallestCutoff) {
-		top: $headerSizeSmall + 32px;
+	@media (max-width: $smallest-cutoff) {
+		top: $header-size-small + 32px;
 	}
 
 }
@@ -272,8 +287,8 @@ h4, h5 {
 	top: 110px;
 	transition: all .2s ease-in-out;
 	cursor: pointer;
-	@media (max-width: $smallestCutoff) {
-		top: 110px - $headerSizeSmall;
+	@media (max-width: $smallest-cutoff) {
+		top: 110px - $header-size-small;
 	}
 }
 .close-button > span {
@@ -294,19 +309,19 @@ h4, h5 {
 	opacity: 0.75;
 }
 
-.singleContainer {
+.single-container {
 	margin: 0px;
-	max-width: $maxWidth;
+	max-width: $max-width;
 	display: inline-block;
 	text-align: left;
-	@media (min-width: $smallestCutoff) {
+	@media (min-width: $smallest-cutoff) {
 	width: 80vw;
 	}
-	@media (max-width: $smallCutoff) {
+	@media (max-width: $small-cutoff) {
 		text-align:center;
 	}
 }
-.singleContainer h2 {
+.single-container h2 {
 	font-size: 24pt;
 	display: inline;
 	padding-right: 0px;
@@ -315,25 +330,25 @@ h4, h5 {
 	display: inline;
 	padding-left: 10px;
 	color: white;
-	@media (max-width: $smallCutoff) {
+	@media (max-width: $small-cutoff) {
 		color: $ink;
 	}
 	font-weight: 700;
 }
-.singleContainer h4 {
+.single-container h4 {
 	margin-bottom: 20px;
 }
 
-.singleContainer .filmStats {
+.single-container .film-stats {
 	margin-top: -4px;
-	border-radius: 0 0 $borderRadius $borderRadius;
+	border-radius: 0 0 $border-radius $border-radius;
 	list-style-type: none;
 	text-align: left;
 	padding: 0px 14px;
 	display: inline-block;
 
 }
-.singleContainer .filmStats li{
+.single-container .film-stats li{
 	text-align: left;
 	width: auto;
 	border: none;
@@ -345,15 +360,15 @@ h4, h5 {
 	padding: 14px;
 	margin: 0;
 }
-.singleContainer h3 {
+.single-container h3 {
 	margin-top: 24px;
 }
-.singleContainer .ratings {
+.single-container .ratings {
 	background-color: white;
-	border-radius: $borderRadius;
+	border-radius: $border-radius;
 	padding: 0px;
 }
-.singleContainer .ratings li {
+.single-container .ratings li {
 	text-align: left;
 	padding: 14px;
 	width: calc(33% -  28px);

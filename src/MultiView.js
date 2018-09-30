@@ -1,27 +1,62 @@
 import React from 'react';
-
+import BottomScrollListener from 'react-bottom-scroll-listener';
 import { FilmCard } from './FilmCard.js';
+import { LoadingView } from './LoadingView.js';
+
+const api = 'https://panoramix-backend.herokuapp.com/movies';
 
 export class MultiView extends React.Component {
 	constructor(props) {
 		super(props);
-		this.state = {selected: 'none'};
-		this.handler = this.handler.bind(this);
-	}
-	handler(filmID) {
-		this.setState({selected:1});
-		this.props.select(filmID);
+		this.state = {
+			isLoading: true,
+			isLoadingScroll: false,
+			numPages: 1,
+		};
 	}
 	render() {
-		var passer = this.handler;
-		var cards = this.props.data.map(function(film, index) {
-			return <FilmCard film={film} key={index} index={index} handler={passer}/>;
+		if (this.state.isLoading){
+			return <LoadingView />;
+		}
+		var cards = this.state.data.map(function(film, index) {
+			return <FilmCard film={film} key={index} index={index} />;
 		}, this);
-		return <div className="cardContainer">
-		{cards}
-		</div>;
+		return (
+			<div>
+				<div className="card-container">
+					{cards}
+					<LoadingView />
+					<BottomScrollListener onBottom={this.fetchMore.bind(this)} offset={500} />
+				</div>
+			</div>
+		);
 	}
 	componentDidMount() {
-		this.props.scrollRestore();
+		var query = this.getQuery(1);
+		fetch(api + query)
+			.then(response => response.json())
+			.then(data => this.setState({data: data.movies, isLoading: false}));
+	}
+
+	getQuery(page){
+		return ("?page="+page+"&limit=15");
+	}
+
+	fetchMore() {
+	    if (!this.state.isLoading){
+			this.setState({isLoadingScroll: true});
+			var page = this.state.numPages + 1;
+			this.setState({numPages: page});
+			var query = this.getQuery(page);
+			fetch(api + query)
+			.then(response => response.json())
+			.then(data => {
+				var combined = [];
+				combined = combined.concat(this.state.data);
+				combined = combined.concat(data.movies);
+				console.log(combined);
+				this.setState({data: combined, isLoadingScroll: false})
+			});    
+	  	}
 	}
 }
