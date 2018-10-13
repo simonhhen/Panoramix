@@ -1,47 +1,55 @@
 import React from 'react';
-
+import { LoadingView } from './LoadingView.js';
 import { CloseButton } from './CloseButton.js';
 
 export class SingleView extends React.Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			isLoading: true,
+			filmID: props.match.params.filmID,
+		};
+	}
 	render() {
-	    var img = this.props.film.Poster;
-		return <div className="singleContainer">
+		if (this.state.isLoading) return <LoadingView />;
+	    var img = this.state.film.Poster;
+		return <div className="single-container">
 				<div className="single-background"></div>
-				<CloseButton handler={this.props.close} className='close-button' />
-				<div className="close" onClick={this.props.close}></div>
 				<div className="film-content">
           		<div className="film-poster" style={{backgroundImage: `url(${img})` }}></div>
-	            <div className="filmDetails">
-	            <h2>{this.props.film.Title}</h2>
-	            <span className="year">({this.props.film.Year})</span>
-          		<h4>{this.props.film.Genre}</h4>
-          		<ul className="filmStats">
+	            <div className="film-details">
+	            <div className="film-details-header">
+					<h2>{this.state.film.Title}</h2>
+					<span className="year">({this.state.film.Year})</span>
+          			<h4>{this.state.film.Genre}</h4>
+				</div>
+          		<ul className="film-stats">
 			   		<li>
 			   			<div className="source">Rated</div>
-                    	<div className="value">{this.props.film.Rated}</div>
+                    	<div className="value">{this.state.film.Rated}</div>
                     </li>
                     <li>
 			   			<div className="source">Runtime</div>
-                    	<div className="value">{this.props.film.Runtime}</div>
+                    	<div className="value">{this.state.film.Runtime}</div>
                     </li>
                     <li>
 			   			<div className="source">Domestic Gross</div>
-                    	<div className="value">{this.props.film.BoxOffice}</div>
+                    	<div className="value">{this.state.film.BoxOffice}</div>
                     </li>
 			   	</ul>
-	            <p className="synopsis">{this.props.film.Plot}</p>
-				<ul className="filmStats">
+	            <p className="synopsis">{this.state.film.Plot}</p>
+				<ul className="film-stats">
 	          		<li><div className="source">Director</div>
-	          		{this.props.film.Director}</li>
+	          		{this.state.film.Director}</li>
 	      			<li><div className="source">Starring</div>
-			   		{this.props.film.Actors}</li>
+			   		{this.state.film.Actors}</li>
 			   		<li><div className="source">Written by</div>
-			   		{this.props.film.Writer}</li>
-	          		<li><div className="source">Production</div>{this.props.film.Production}</li>
+			   		{this.state.film.Writer}</li>
+	          		<li><div className="source">Production</div>{this.state.film.Production}</li>
           		</ul>
           		<h3>Ratings</h3>
           		 <ul className="ratings">
-	              { this.props.film.Ratings.map(function(rating, index) {
+	              { this.state.film.Ratings.map(function(rating, index) {
 	                var sourceClass = rating.Source.replace(/ /g, '-').toLowerCase();
 	                return (<li className={sourceClass} key={index}>
 	                		<div className="source">{rating.Source}</div>
@@ -56,6 +64,11 @@ export class SingleView extends React.Component {
 	            </div>;
 	}
 	componentDidMount() {
-  		window.scrollTo(0, 0)
+		const api = 'https://panoramix-backend.herokuapp.com/movie';
+		fetch(api + '/' + this.state.filmID)
+			.then(response => response.json())
+			.then(data => {
+			  this.setState({ film: data, isLoading: false });
+			});
 	}
 }

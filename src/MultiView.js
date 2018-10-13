@@ -15,9 +15,7 @@ export class MultiView extends React.Component {
 		};
 	}
 	render() {
-		if (this.state.isLoading){
-			return <LoadingView />;
-		}
+		if (this.state.isLoading) return <LoadingView />;
 		var cards = this.state.data.map(function(film, index) {
 			return <FilmCard film={film} key={index} index={index} />;
 		}, this);

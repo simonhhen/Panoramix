@@ -1,16 +1,15 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './style.css';
 import './App.scss';
 
 import {
   BrowserRouter as Router,
   Route,
-  Link,
   Switch
 } from 'react-router-dom'
 
 import { MultiView } from './MultiView.js';
-// import { SingleView } from './SingleView.js';
+import { SingleView } from './SingleView.js';
 
 const App = () => (
   <Router>
@@ -37,17 +36,13 @@ const Header = () => (
 
 const Main = () => (
   <Switch>
-    <Route exact path='/' component={MultiView}/>
     <Route path='/film/:filmID' component={SingleView}/>
+    <Route path='/' component={MultiView}/>
 </Switch>
 )
 // const MultiView = () => (
 //   <h3>MultiView</h3>
 // )
-const SingleView = (props) => {
-  const filmID = parseInt(props.match.params.filmID);
-  return (<h3>{filmID}</h3>);
-}
 
 // class Home extends Component {
 

@@ -4,7 +4,7 @@ export class FilmCard extends React.Component {
 	render() {
     var img = this.props.film.Poster;
 		return (
-      <a href={'/films/' + this.props.index}>
+      <a href={'/film/' + this.props.film.imdbID}>
         <div className="film-card" onClick={() => this.props.handler()}>
           <div className="film-poster" style={{backgroundImage: `url(${img})` }}></div>
           <div className="film-details">
@@ -31,7 +31,7 @@ export class FilmCard extends React.Component {
       );
   }
   capText(string) {
-    const ellipses = string.length > 50 ? '...' : ''; 
-    return string.substr(0,50).trim() + ellipses;
+    const ellipses = string.length > 52 ? '...' : ''; 
+    return string.substr(0,52).trim() + ellipses;
   }
 }
