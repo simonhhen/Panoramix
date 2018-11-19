@@ -1,11 +1,12 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 export class FilmCard extends React.Component {
 	render() {
     var img = this.props.film.Poster;
 		return (
-      <a href={'/film/' + this.props.film.imdbID}>
-        <div className="film-card" onClick={() => this.props.handler()}>
+      <Link to={'/film/' + this.props.film.imdbID} onClick={this.props.onClick}>
+        <div className="film-card">
           <div className="film-poster" style={{backgroundImage: `url(${img})` }}></div>
           <div className="film-details">
           <h2>{this.capText(this.props.film.Title)}</h2>
@@ -27,11 +28,11 @@ export class FilmCard extends React.Component {
           </ul>
           </div>
         </div>
-      </a>
+      </Link>
       );
   }
   capText(string) {
-    const ellipses = string.length > 52 ? '...' : ''; 
-    return string.substr(0,52).trim() + ellipses;
+    const ellipses = string.length > 49 ? '...' : ''; 
+    return string.substr(0,49).trim() + ellipses;
   }
 }

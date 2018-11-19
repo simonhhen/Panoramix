@@ -1,9 +1,10 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 export class CloseButton extends React.Component {
 	render() {
 		return (
-			<div className="close-button" onClick={this.props.handler}><span></span><span></span></div>
+			<Link to="/" className="button-container" onClick={this.props.onClick}><div className="close-button"><span></span><span></span></div></Link>
 			);
 	}
 }

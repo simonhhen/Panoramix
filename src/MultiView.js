@@ -17,14 +17,14 @@ export class MultiView extends React.Component {
 	render() {
 		if (this.state.isLoading) return <LoadingView />;
 		var cards = this.state.data.map(function(film, index) {
-			return <FilmCard film={film} key={index} index={index} />;
+			return <FilmCard film={film} key={index} index={index} onClick={this.props.onFilmSelect} />;
 		}, this);
 		return (
 			<div>
 				<div className="card-container">
 					{cards}
 					<LoadingView />
-					<BottomScrollListener onBottom={this.fetchMore.bind(this)} offset={500} />
+					<BottomScrollListener onBottom={this.fetchMore.bind(this)} offset={800} />
 				</div>
 			</div>
 		);
@@ -37,7 +37,7 @@ export class MultiView extends React.Component {
 	}
 
 	getQuery(page){
-		return ("?page="+page+"&limit=15");
+		return ("?page="+page+"&limit=30");
 	}
 
 	fetchMore() {
@@ -52,7 +52,6 @@ export class MultiView extends React.Component {
 				var combined = [];
 				combined = combined.concat(this.state.data);
 				combined = combined.concat(data.movies);
-				console.log(combined);
 				this.setState({data: combined, isLoadingScroll: false})
 			});    
 	  	}

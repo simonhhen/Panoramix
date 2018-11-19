@@ -1,6 +1,7 @@
 import React from 'react';
 import { LoadingView } from './LoadingView.js';
 import { CloseButton } from './CloseButton.js';
+import { Redirect } from 'react-router';
 
 export class SingleView extends React.Component {
 	constructor(props) {
@@ -9,20 +10,30 @@ export class SingleView extends React.Component {
 			isLoading: true,
 			filmID: props.match.params.filmID,
 		};
+		this.handleClick = this.handleClick.bind(this)
 	}
 	render() {
+		if (this.state.backHome) return <Redirect push to="/" />;
 		if (this.state.isLoading) return <LoadingView />;
 	    var img = this.state.film.Poster;
-		return <div className="single-container">
-				<div className="single-background"></div>
-				<div className="film-content">
-          		<div className="film-poster" style={{backgroundImage: `url(${img})` }}></div>
-	            <div className="film-details">
-	            <div className="film-details-header">
-					<h2>{this.state.film.Title}</h2>
-					<span className="year">({this.state.film.Year})</span>
-          			<h4>{this.state.film.Genre}</h4>
+		return <div className="overlay" id="overlay">
+				<div className="film-details-header">
+					<CloseButton onClick={this.props.onClose}/>
 				</div>
+				<div className="overlay-container">
+				<div className="film-details-banner">
+				<div className="single-container align-bottom">
+					<div className="film-poster" style={{backgroundImage: `url(${img})` }}></div>
+					<div className="film-details-highlights">
+						<h2>{this.state.film.Title}</h2>
+						<span className="year">({this.state.film.Year})</span>
+						<h4>{this.state.film.Genre}</h4>
+					</div>
+				</div>
+				</div>
+				<div className="film-content">
+				<div className="single-container">
+	            <div className="film-details">
           		<ul className="film-stats">
 			   		<li>
 			   			<div className="source">Rated</div>
@@ -60,15 +71,29 @@ export class SingleView extends React.Component {
 
 	            </ul>
        			</div>
-       			</div>
-	            </div>;
+				</div>
+				</div>
+				</div>
+				</div>;
 	}
 	componentDidMount() {
+		document.addEventListener('mousedown', this.handleClick);
 		const api = 'https://panoramix-backend.herokuapp.com/movie';
 		fetch(api + '/' + this.state.filmID)
 			.then(response => response.json())
 			.then(data => {
 			  this.setState({ film: data, isLoading: false });
 			});
+	}
+	
+	componentWillUnmount() {
+		document.removeEventListener('mousedown', this.handleClick);
+	}
+
+	handleClick(event) {
+		var overlay = document.getElementById('overlay');
+		if (event.target === overlay) {
+			this.setState({backHome: true});
+		}
 	}
 }
