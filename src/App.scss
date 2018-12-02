@@ -99,6 +99,7 @@ overflow-y: scroll;
 	animation: fadeInTranslate 0.3s ease-in;
 	padding: 35px 0px 20px 0px;
 	overflow-y: scroll;
+	-webkit-overflow-scrolling: touch;
 	max-width: 1280px;
 	@media (max-width: $mid-cutoff){
 		width: 90vw;
