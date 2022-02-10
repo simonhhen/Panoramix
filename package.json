@@ -63,7 +63,7 @@
     "heroku-postbuild": "node scripts/build.js"
   },
   "devDependencies": {
-    "node-sass": "^4.13.1",
+    "node-sass": "^7.0.0",
     "react-redux": "^5.0.7",
     "sass-loader": "^7.1.0"
   },
